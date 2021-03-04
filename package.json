@@ -1,0 +1,41 @@
+{
+  "name": "simple-feed",
+  "version": "0.1.0",
+  "description": "Simple Feed",
+  "main": "index.js",
+  "scripts": {
+    "commit": "npx git-cz",
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "dev": "nodemon app.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Simonbelete/simple-feed.git"
+  },
+  "author": "Simon Belete",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Simonbelete/simple-feed/issues"
+  },
+  "homepage": "https://github.com/Simonbelete/simple-feed#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "typescript": "^4.2.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "commitizen": "^4.1.2",
+    "cz-conventional-changelog": "^3.2.0",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
