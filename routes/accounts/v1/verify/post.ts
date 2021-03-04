@@ -6,9 +6,10 @@ import UserDto from '../../../../dto/user_dto';
 const V1_PostVerify = (router: IRoute) => {
     router.post(Authenticator, async (request: Request, response: Response, next: NextFunction) => {
         var user_dto : UserDto = {
-            phoneNumber: request.body.phoneNumber
+            phoneNumber: request.body.phoneNumber,
+            account: response.locals.user.user_id
         }
-
+        
         var user_by_pnum = await new UserService().getByPhoneNumber(user_dto.phoneNumber);
         
         if(user_by_pnum == undefined || user_by_pnum == null) {

@@ -3,12 +3,16 @@ import UserDto from '../dto/user_dto';
 
 class UserService {
     public async create(user: UserDto) {
-       var new_user =  new User({ phoneNumber: user.phoneNumber });
+       var new_user =  new User({ phoneNumber: user.phoneNumber, account: user.account });
        return await new_user.save();
     }
 
     public async getByPhoneNumber(phoneNumber: String) {
         return await User.findOne({phoneNumber: phoneNumber});
+    }
+
+    public async getByAccount(account: String) {
+        return await User.findOne({account: account});
     }
 
     public async getAll() {

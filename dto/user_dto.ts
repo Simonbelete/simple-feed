@@ -1,3 +1,4 @@
 export default interface UserDto {
-    phoneNumber: String
+    phoneNumber: String,
+    account?: String
 }

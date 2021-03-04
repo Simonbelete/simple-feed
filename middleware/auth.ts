@@ -54,7 +54,6 @@ const authenticateHeader = async (request: Request, response: Response, next: Ne
     }
 
     const currentUser = await decodeIDToken(request);
-
     response.locals.user = currentUser;
     
     return next();
