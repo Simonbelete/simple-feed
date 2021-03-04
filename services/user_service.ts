@@ -2,19 +2,17 @@ import { User, UserSchema } from '../models/User';
 import UserDto from '../dto/user_dto';
 
 class UserService {
-    public create(user: UserDto) {
-       new User({
-           phoneNumber: user.phoneNumber
-        })
-        .save((err, doc) => {
-            // TODO: log on error
-            if(err) return false;
-            return true;
-        })
+    public async create(user: UserDto) {
+       var new_user =  new User({ phoneNumber: user.phoneNumber });
+       return await new_user.save();
     }
 
-    public getByPhoneNumber(phoneNumber: String) {
-        return User.find({phoneNumber: phoneNumber});
+    public async getByPhoneNumber(phoneNumber: String) {
+        return await User.findOne({phoneNumber: phoneNumber});
+    }
+
+    public async getAll() {
+        return await User.find({}).limit(100);
     }
 
     public async verify(user: UserDto) {

@@ -1,5 +1,6 @@
 import { Application, IRoute } from 'express';
 import { BaseRoute } from '../base';
+import { V1_GetUsers } from './v1/get';
 import { V1_PostUsers } from './v1/post';
 import { V1_GetUsersById } from './v1/id/get';
 
@@ -19,6 +20,7 @@ class UsersRoute extends BaseRoute {
          * 
          * @version 1.0.0
          */     
+        V1_GetUsers(this.router);
         V1_PostUsers(this.router);
         // ${userId}
         V1_GetUsersById(this.routerWithId);

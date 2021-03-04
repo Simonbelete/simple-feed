@@ -4,7 +4,7 @@ const UserSchema = new mongoose.Schema(
     {
         username: {
             type: String,
-            required: [false],
+            default: null,
         },
         posts: {
             type: Number,
@@ -20,11 +20,11 @@ const UserSchema = new mongoose.Schema(
         },
         account: {
             type: String,
-            requried: [false]
+            default: null
         },
         name: {
             type: String,
-            required: [false],
+            default: null,
             //index: true,
         },
         profilePic: {
@@ -33,6 +33,11 @@ const UserSchema = new mongoose.Schema(
         },
         bio: {
             type: String,
+        },
+        phoneNumber: {
+            type: String,
+            default: null,
+            unique: true
         }
     },
     { timestamps: true },
