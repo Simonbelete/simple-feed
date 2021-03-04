@@ -1,5 +1,6 @@
 import { Application, Request, Response } from 'express';
 import { BaseRoute } from './base';
+import Authenticator from '../middleware/auth';
 
 class TestRoute extends BaseRoute {
     
@@ -10,7 +11,7 @@ class TestRoute extends BaseRoute {
     public routes() {
 
         this.app.route('/api/v1/test')
-            .get((request: Request, response: Response) => {
+            .get(Authenticator, (request: Request, response: Response) => {
                 response.status(200).send('It works');
             });
 

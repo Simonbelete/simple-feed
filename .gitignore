@@ -1,4 +1,14 @@
 dist/
+.docker/mongodb/data/journal
+.docker/mongodb/data/diagnostic.data
+.docker/mongodb/data/*.wt
+.docker/mongodb/data/*.bson
+.docker/mongodb/data/*.lock
+.docker/mongodb/data/WiredTiger*
+.docker/mongodb/data/*.turtle
+
+
+
 
 # Logs
 logs
