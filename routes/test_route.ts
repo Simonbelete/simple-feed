@@ -12,7 +12,8 @@ class TestRoute extends BaseRoute {
 
         this.app.route('/api/v1/test')
             .get(Authenticator, (request: Request, response: Response) => {
-                response.status(200).send('It works');
+                console.log(response.locals);
+                response.status(200).send('It works ');
             });
 
         return this.app;

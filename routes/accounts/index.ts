@@ -5,8 +5,8 @@ class AccountsRoute extends BaseRoute {
     routerVerify: IRoute;
 
     constructor(app: Application) {
-        super(app: 'AccountsRouter');
-        this.routerVerify = this.app.route('/api/v1/accounts');
+        super(app, 'AccountsRouter');
+        this.routerVerify = this.app.route('/api/v1/accounts/verify');
     }
 
     public routes() {

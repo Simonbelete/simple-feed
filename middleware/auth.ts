@@ -1,4 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
+import * as admin from "firebase-admin";
+
+const serviceAccount = require('../simple-feed-4ae6d-firebase-adminsdk-j0dwr-8b3f49c71f.json');
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    //databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
+});
 
 /**
  * The JWT will come in a header with the form
@@ -11,7 +19,21 @@ const getTokenFromHeader = (request: Request) => {
     return null;
 }
 
-const authenticateHeader = (request: Request, response: Response, next: NextFunction) => {
+async function decodeIDToken(request: Request) {
+    const tokenId = getTokenFromHeader(request) || ''; 
+
+    // Decode token
+    try{
+        const decodedToken = await admin.auth().verifyIdToken(tokenId);
+        return decodedToken;
+    }catch(err){
+        console.log(err);
+    }
+
+    return null;
+}
+
+const authenticateHeader = async (request: Request, response: Response, next: NextFunction) => {
     if(getTokenFromHeader(request) == null) {
         // Return 403
         response.setHeader('Content-Type', 'application/json');
@@ -31,6 +53,10 @@ const authenticateHeader = (request: Request, response: Response, next: NextFunc
         )
     }
 
+    const currentUser = await decodeIDToken(request);
+
+    response.locals.user = currentUser;
+    
     return next();
 };
 
