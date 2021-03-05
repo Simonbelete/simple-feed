@@ -13,6 +13,6 @@ export default async (): Promise<any> => {
     } catch(error){
         console.log(error);
         // Close Server
-        process.exit();
+        //process.exit();
     }
 }

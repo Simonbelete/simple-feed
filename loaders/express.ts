@@ -23,7 +23,7 @@ export default (app: Application) => {
     })
 
     // Error Handlers
-    if (dotenvResult.error) { throw dotenvResult.error }
+    //if (dotenvResult.error) { throw dotenvResult.error }
 
     app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
         if (!err.statusCode) err.statusCode = 500; // If err has no specified error code, set error code to 'Internal Server Error (500)'
