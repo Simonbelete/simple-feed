@@ -10,7 +10,7 @@ export default (app: Application) => {
     const server: http.Server = http.createServer(app);
 
     // Vars
-    var port = process.env.SERVER_PORT || '3000';
+    var port = process.env.SERVER_PORT || '80';
 
     // Express uses
     app.use(bodyparser.json()); // Parse incoming body requests to json
