@@ -19,9 +19,9 @@ class PostService {
         return await Post.findByIdAndUpdate({id},{$inc: {likes: 1}});
     }
 
-    public async getByPage(page: any = 1, limit: any = 10) {
+    public async getByPage(page: number = 0, limit: number = 10) {
         var offset = page * limit;
-        return await Post.find({}).limit(limit).skip(offset).sort('-createdOn');
+        return await Post.find({}).limit(limit).skip(offset).sort('-createdOn').populate('user');
     }
 }
 
