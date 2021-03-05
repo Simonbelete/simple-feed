@@ -19,7 +19,7 @@ const getTokenFromHeader = (request: Request) => {
     return null;
 }
 
-async function decodeIDToken(request: Request) {
+async function decodeIDToken(request: Request, response: Response) {
     const tokenId = getTokenFromHeader(request) || ''; 
 
     // Decode token
@@ -28,6 +28,8 @@ async function decodeIDToken(request: Request) {
         return decodedToken;
     }catch(err){
         console.log(err);
+        response.status(400);
+        response.send(err);
     }
 
     return null;
@@ -53,7 +55,7 @@ const authenticateHeader = async (request: Request, response: Response, next: Ne
         )
     }
 
-    const currentUser = await decodeIDToken(request);
+    const currentUser = await decodeIDToken(request, response);
     response.locals.user = currentUser;
     
     return next();
