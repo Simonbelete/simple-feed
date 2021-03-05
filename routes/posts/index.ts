@@ -1,5 +1,6 @@
 import { Application, IRoute } from 'express';
 import { BaseRoute } from '../base';
+import { V1_GetPosts } from './v1/get';
 import { V1_PostPosts } from './v1/post';
 import { V1_PutPost } from './v1/id/put';
 
@@ -19,6 +20,7 @@ class PostsRoute extends BaseRoute {
          * 
          * @version 1.0.0
          */  
+        V1_GetPosts(this.router);
         V1_PostPosts(this.router);
         // ${postId}
         V1_PutPost(this.routerWithId);

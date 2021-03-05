@@ -1,14 +1,17 @@
 import { IRoute, NextFunction, Request, Response } from 'express';
 import Authenticator from '../../../middleware/auth';
-import PostDto from '../../../dto/post_dto';
 import PostService from '../../../services/post_service';
-import UserService from '../../../services/user_service';
 
 const V1_GetPosts = (router: IRoute) => {
-    router.post(Authenticator, async (request: Request, response: Response, next: NextFunction) => {
-        var page = request.query.page || 1;
-        var limit = request.query.limit || 10;
-        var posts = await new PostService().getByPage(page, limit);
+    router.get(Authenticator, async (request: Request, response: Response, next: NextFunction) => {
+        // TODO: Improve code quality and readablity i.e remove the nested if statements
+        var page : Number = Number(request.query.page);
+        var limit : Number = Number(request.query.limit);
+
+        var posts = await new PostService().getByPage(+page, +limit);
+
+        response.status(200);
+        response.send(posts);
     })
 }
 
