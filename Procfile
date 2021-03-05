@@ -1,1 +1,1 @@
-web: npm install && npm run build && cp simple-feed-4ae6d-firebase-adminsdk-j0dwr-8b3f49c71f.json dist/ && npm start
+web: npm run dev
